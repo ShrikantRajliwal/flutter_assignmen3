@@ -1,0 +1,61 @@
+import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
+import 'package:flutter_assignmen3/screens/edit_task.dart';
+import 'package:flutter_assignmen3/screens/new_task.dart';
+import 'package:flutter_assignmen3/widgets/task_widget.dart';
+
+class HomeScreen extends StatelessWidget {
+  const HomeScreen({super.key});
+
+  @override
+  Widget build(context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("Tasks"),
+        actions: [
+          Padding(
+            padding: const EdgeInsets.only(right: 18.0),
+            child: Icon(Icons.add),
+          ),
+        ],
+      ),
+
+      body: Padding(
+        padding: const EdgeInsets.only(left: 17.0, right: 13),
+        child: SizedBox(
+          width: double.infinity,
+          child: ListView(
+            children: [
+              GestureDetector(
+                child: TaskWidget(),
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (_) => EditTask()),
+                  );
+                },
+              ),
+              SizedBox(height: 15),
+              TaskWidget(),
+              SizedBox(height: 15),
+              TaskWidget(),
+              SizedBox(height: 15),
+              TaskWidget(),
+              SizedBox(height: 15),
+            ],
+          ),
+        ),
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          Navigator.push(context, MaterialPageRoute(builder: (_) => NewTask()));
+        },
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadiusGeometry.circular(100),
+        ),
+        backgroundColor: const Color.fromARGB(255, 88, 163, 224),
+        child: Icon(Icons.add),
+      ),
+    );
+  }
+}
