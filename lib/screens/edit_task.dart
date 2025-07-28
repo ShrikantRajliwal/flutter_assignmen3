@@ -5,7 +5,7 @@ import 'package:flutter_assignmen3/models/task_data.dart';
 class EditTask extends StatefulWidget {
   final TaskData task;
 
-  EditTask({super.key, required this.task});
+  const EditTask({super.key, required this.task});
 
   @override
   State<EditTask> createState() => _EditTaskState();
@@ -47,7 +47,7 @@ class _EditTaskState extends State<EditTask> {
                   SizedBox(height: 10),
                   Container(
                     decoration: BoxDecoration(
-                      color: const Color.fromARGB(255, 230, 231, 233),
+                      color: Color(0xFFF0F2F5),
                       borderRadius: BorderRadius.circular(12),
                     ),
                     child: TextField(
@@ -65,7 +65,7 @@ class _EditTaskState extends State<EditTask> {
                   SizedBox(height: 10),
                   Container(
                     decoration: BoxDecoration(
-                      color: const Color.fromARGB(255, 230, 231, 233),
+                      color: Color(0xFFF0F2F5),
                       borderRadius: BorderRadius.circular(12),
                     ),
                     height: 120,
@@ -84,7 +84,7 @@ class _EditTaskState extends State<EditTask> {
                   SizedBox(height: 10),
                   Container(
                     decoration: BoxDecoration(
-                      color: const Color.fromARGB(255, 230, 231, 233),
+                      color: Color(0xFFF0F2F5),
                       borderRadius: BorderRadius.circular(12),
                     ),
                     height: 70,
@@ -98,25 +98,20 @@ class _EditTaskState extends State<EditTask> {
                 ],
               ),
               SizedBox(height: 320),
-              Positioned(
-                child: TextButton(
-                  onPressed: () {
-                    final changeTask = TaskData(
-                      title: titleController.text,
-                      description: descriptionController.text,
-                      date: dueDateController.text,
-                    );
-                    Navigator.pop(context, changeTask);
-                  },
-                  child: Text("Save", style: TextStyle(color: Colors.white)),
+              TextButton(
+                onPressed: () {
+                  final changeTask = TaskData(
+                    title: titleController.text,
+                    description: descriptionController.text,
+                    date: dueDateController.text,
+                  );
+                  Navigator.pop(context, changeTask);
+                },
+                child: Text("Save", style: TextStyle(color: Colors.white)),
 
-                  style: TextButton.styleFrom(
-                    backgroundColor: const Color.fromARGB(255, 35, 141, 227),
-                    padding: EdgeInsets.symmetric(
-                      horizontal: 160,
-                      vertical: 15,
-                    ),
-                  ),
+                style: TextButton.styleFrom(
+                  backgroundColor: const Color.fromARGB(255, 35, 141, 227),
+                  padding: EdgeInsets.symmetric(horizontal: 160, vertical: 15),
                 ),
               ),
             ],

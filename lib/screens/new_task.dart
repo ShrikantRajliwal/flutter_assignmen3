@@ -11,9 +11,9 @@ class NewTask extends StatefulWidget {
 }
 
 class _NewTaskState extends State<NewTask> {
-  late TextEditingController titleController = TextEditingController();
-  late TextEditingController descriptionController = TextEditingController();
-  late TextEditingController dueDateController = TextEditingController();
+  final titleController = TextEditingController();
+  final descriptionController = TextEditingController();
+  final dueDateController = TextEditingController();
 
   @override
   Widget build(context) {
@@ -36,10 +36,11 @@ class _NewTaskState extends State<NewTask> {
                   SizedBox(height: 10),
                   Container(
                     decoration: BoxDecoration(
-                      color: const Color.fromARGB(255, 230, 231, 233),
+                      color: Color(0xFFF0F2F5),
                       borderRadius: BorderRadius.circular(12),
                     ),
                     child: TextField(
+                      controller: titleController,
                       decoration: InputDecoration(
                         border: OutlineInputBorder(borderSide: BorderSide.none),
                       ),
@@ -53,11 +54,12 @@ class _NewTaskState extends State<NewTask> {
                   SizedBox(height: 10),
                   Container(
                     decoration: BoxDecoration(
-                      color: const Color.fromARGB(255, 230, 231, 233),
+                      color: Color(0xFFF0F2F5),
                       borderRadius: BorderRadius.circular(12),
                     ),
                     height: 120,
                     child: TextField(
+                      controller: descriptionController,
                       decoration: InputDecoration(
                         border: OutlineInputBorder(borderSide: BorderSide.none),
                       ),
@@ -71,11 +73,12 @@ class _NewTaskState extends State<NewTask> {
                   SizedBox(height: 10),
                   Container(
                     decoration: BoxDecoration(
-                      color: const Color.fromARGB(255, 230, 231, 233),
+                      color: Color(0xFFF0F2F5),
                       borderRadius: BorderRadius.circular(12),
                     ),
                     height: 70,
                     child: TextField(
+                      controller: dueDateController,
                       decoration: InputDecoration(
                         border: OutlineInputBorder(borderSide: BorderSide.none),
                       ),
@@ -84,29 +87,24 @@ class _NewTaskState extends State<NewTask> {
                 ],
               ),
               SizedBox(height: 320),
-              Positioned(
-                child: TextButton(
-                  onPressed: () {
-                    final newTask = TaskData(
-                      title: titleController.text,
-                      description: titleController.text,
-                      date: titleController.text,
-                    );
-                    Navigator.pop(context, newTask);
-                  },
-                  child: Text(
-                    "Add task",
-                    style: TextStyle(color: Colors.white),
-                  ),
+              TextButton(
+                onPressed: () {
+                  final newTask = TaskData(
+                    title: titleController.text,
+                    description: descriptionController.text,
+                    date: dueDateController.text,
+                  );
+                  // print(newTask.title);
+                  // print(newTask.description);
+                  // print(newTask.date);
+                  Navigator.pop(context, newTask);
+                },
 
-                  style: TextButton.styleFrom(
-                    backgroundColor: const Color.fromARGB(255, 35, 141, 227),
-                    padding: EdgeInsets.symmetric(
-                      horizontal: 160,
-                      vertical: 15,
-                    ),
-                  ),
+                style: TextButton.styleFrom(
+                  backgroundColor: const Color.fromARGB(255, 35, 141, 227),
+                  padding: EdgeInsets.symmetric(horizontal: 160, vertical: 15),
                 ),
+                child: Text("Add task", style: TextStyle(color: Colors.white)),
               ),
             ],
           ),
